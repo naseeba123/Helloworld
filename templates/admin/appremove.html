@@ -1,0 +1,42 @@
+{% extends 'admin/header.html' %}
+{% block content %}
+
+
+
+<div class="table-heading">
+					<h2 style="padding-top:30px;padding-bottom:5px;">New Registrations</h2>
+				</div>
+				<div class="agile-tables" style="padding-left: 50px;padding-right: 50px;">
+					<div class="w3l-table-info">
+				
+					    <table id="table">
+						<thead>
+						  <tr>
+							<th>NAME</th>
+							<th>EMAIL</th>
+							<th>MOBILE</th>
+							<th>APPROVE</th>
+							<th>REMOVE</th>
+							
+						  </tr>
+						</thead>
+						{% for x in msg %}
+						<tbody>
+						  <tr>
+							<td>{{x.name}}</td>
+							<td>{{x.email}}</td>
+							<td>{{x.phone}}</td>
+							<td><a href="/approve/?i_d={{x.id}}" style="background-color:green;color:white;border-radius:4.5px;padding: 5px;"><b>APPROVE</b></a></td>
+							<td><a href="/remove/?i_d={{x.id}}" style="background-color:orange;color: white;border-radius: 4.5px;padding:5px"><b>REMOVE</b></a></td>
+							
+						  </tr>
+						 
+						 
+						 
+						</tbody>
+						{% endfor %}
+					  </table>
+					</div>
+				</div>
+  
+{% endblock %}

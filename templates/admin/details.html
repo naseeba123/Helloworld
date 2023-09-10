@@ -1,0 +1,42 @@
+{% extends 'admin/header.html' %}
+{% block content %}
+
+
+
+<div class="table-heading">
+					<h2 style="padding-top:30px;padding-bottom:5px;">Books</h2>
+				</div>
+				<div class="agile-tables" style="padding-left: 50px;padding-right: 50px;">
+					<div class="w3l-table-info">
+				
+					    <table id="table">
+						<thead>
+						  <tr>
+							<th>NAME</th>
+							<th>AUTHOR</th>
+							<th>EDITION</th>
+							<th>TOTAL COPIES</th>
+							<!-- <th>ISSUED COPIES</th>
+							 -->
+						  </tr>
+						</thead>
+						{% for x in msg %}
+						<tbody>
+						  <tr>
+							<td>{{x.book}}</td>
+							<td>{{x.author}}</td>
+							<td>{{x.edition}}</td>
+							<td>{{x.copies}}</td>
+							<!-- <td>{{x.issued}}</td> -->
+							
+						  </tr>
+						 
+						 
+						 
+						</tbody>
+						{% endfor %}
+					  </table>
+					</div>
+				</div>
+  
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'admin/header.html' %}
+{% block content %}
+
+
+
+<div class="table-heading">
+					<h2 style="padding-top:30px;padding-bottom:5px;">Books</h2>
+				</div>
+				<div class="agile-tables" style="padding-left: 50px;padding-right: 50px;">
+					<div class="w3l-table-info">
+				
+					    <table id="table">
+						<thead>
+						  <tr>
+							<th>NAME</th>
+							<th>AUTHOR</th>
+							<th>EDITION</th>
+							<th>COPIES</th>
+							<th>IMAGE</th>
+							<th>REMOVE</th>
+							<th>UPDATE</th>
+							
+						  </tr>
+						</thead>
+						{% for y in msg %}
+						<tbody>
+						  <tr>
+							<td>{{y.book}}</td>
+							<td>{{y.author}}</td>
+							<td>{{y.edition}}</td>
+							<td>{{y.copies}}</td>
+							<td><a href="/img_link/?i_d={{y.id}}"><img src="{{y.image.url}}"></a></td>
+							<td><a href="/remove_book/?i_d={{y.id}}" style="background-color:orange;color:white;border-radius:4.5px;padding: 5px;"><b>REMOVE</b></a></td>
+							<td><a href="/up_date/?i_d={{y.id}}" style="background-color:orange;color: white;border-radius: 4.5px;padding:5px"><b>UPDATE</b></a></td>
+							
+						  </tr>
+						 
+						 
+						 
+						</tbody>
+						{% endfor %}
+					  </table>
+					</div>
+				</div>
+  
+{% endblock %}

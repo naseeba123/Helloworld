@@ -1,0 +1,65 @@
+
+
+{% extends 'admin/header.html' %}
+{% block content %}
+
+										
+
+
+<div class="grids">
+					<!-- <div class="progressbar-heading grids-heading">
+					
+					</div> -->
+					<div class="panel panel-widget forms-panel" style="padding:15px; margin:60px; height:700px;">
+						<div class="forms">
+							<div class="form-grids widget-shadow" data-example-id="basic-forms" > 
+								
+								<div class="form-body">
+									
+									<form action="/new_form/" method="post" >{% csrf_token %} 
+										{% for x in msg %}
+										<div class="form-group" > 
+										Name of Book<input type="text" name="name" value="{{x.book}}" class="form-control " > 
+										</div> 
+										<div class="form-group"> 
+											<label>Author of Book</label> 
+											<input type="text" name="Author"  value="{{x.author}}" class="form-control"> 
+										</div> 
+										<div class="form-group"> 
+											<label>Published ON</label> 
+											<input type="date" name="date"  value="{{x.date}}" class="form-control"> 
+										</div> 
+
+										<div class="form-group"> 
+											<label>Edition</label> 
+											<input type="text" name="edition" value="{{x.date}}" class="form-control"> 
+										</div> 
+										<div class="form-group"> 
+											<label>Num.of Pages</label> 
+											<input type="number" name="pages" value="{{x.pages}}" class="form-control"> 
+										</div> 
+										<div class="form-group"> 
+											<label>Num.of Copies</label> 
+											<input type="number" name="copyy" value="{{x.copies}}" class="form-control"> 
+										</div> 
+										<div class="form-group"> 
+											<label>Book Description</label> 
+											<input type="text" name="bookk" value="{{x.description}}" class="form-control"> 
+											<input type="text" name="idd" value="{{x.id}} " hidden>
+										</div> 
+									
+										<div style="text-align: center;" >
+										<button type="submit" class="btn btn-default w3ls-button">UPDATE</button> 
+											{% endfor %}
+									
+									</form> 
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+{% endblock %}

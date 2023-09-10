@@ -1,0 +1,42 @@
+{% extends 'user/u_header.html' %}
+{% block content %}
+
+
+
+<div class="table-heading">
+					<h2 style="padding-top:30px;padding-bottom:5px;">Request</h2>
+				</div>
+				<div class="agile-tables" style="padding-left: 50px;padding-right: 50px;">
+					<div class="w3l-table-info">
+				
+					    <table id="table">
+						<thead>
+						  <tr>
+							<th>BOOK NAME</th>
+							<th>AUTHOR NAME</th>
+							<th>REQUEST DATE</th>
+							<th>REMOVE</th>
+							
+							
+						  </tr>
+						</thead>
+						{% for o in mm %}
+						<tbody>
+						  <tr>
+							<td>{{o.aa.book}}</td>
+							<td>{{o.aa.author}}</td>
+							<td>{{o.z}}</td>
+							
+							<td><a href="/tra_remo/?i_d={{o.id}}" style="background-color:orange;color: white;border-radius: 4.5px;padding:5px"><b>REMOVE </b></a></td>
+							
+						  </tr>
+						 
+						 
+						 
+						</tbody>
+						{% endfor %}
+					  </table>
+					</div>
+				</div>
+  
+{% endblock %}

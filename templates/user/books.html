@@ -1,0 +1,87 @@
+{% extends 'user/u_header.html' %}
+{% block content %}
+
+
+
+<div class="table-heading">
+					<h2 style="padding-top:30px;padding-bottom:5px;">Request</h2>
+				</div>
+				<div class="agile-tables" style="padding-left: 50px;padding-right: 50px;">
+					<div class="w3l-table-info">
+				
+					    <table id="table">
+						<thead>
+						  <tr>
+							<th>BOOK NAME</th>
+							<th>AUTHOR</th>
+							<th>EDITION</th>
+							<th>VIEW DETAILS</th>
+							<th>REQUEST</th>
+							
+						  </tr>
+						</thead>
+						{% for o in msgg %}
+						<tbody>
+						  <tr>
+							<td>{{o.book}}</td>
+							<td>{{o.author}}</td>
+							<td>{{o.edition}}</td>
+						
+						
+							<td><a href="/bu_review/?i_d={{o.id}}" style="background-color:orange;color: white;border-radius: 4.5px;padding:5px"><b>View Book Review </b></a></td>
+
+							<td><input type="button" onclick="req_clk({{o.id}})" id="rq_id" value="Request" class="btn btn-danger"> </td>
+							
+					
+						  </tr>
+						 
+						 
+						 
+						</tbody>
+						{% endfor %}
+					  </table>
+					</div>
+				</div>
+
+
+
+
+    <script type="text/javascript">
+     function req_clk(a)
+     {
+      var e=a;
+
+      $.ajax({
+        url:'/req/',
+        data:
+        {
+          't':e
+        },
+        datatype:'json',
+        success:function(data)
+        {
+        	if(data.am)
+        	{
+        		alert('you have a pending request for the selected book.remove the request and send new request/wait for approve')
+        	}
+        	else if(data.ab)
+        	{
+        		alert('you have the selected book...Return the book and send new request')
+        	}
+        	else if(data.ac)
+        	{
+        		alert('Requested book is not available')
+        	}
+        	else if(data.aa)
+        	{
+        		alert('Request send for the selected book')
+        	}
+        }
+      });
+     }
+   </script>
+
+   <script type="/static/admin/js/bootstrap.js"></script>
+   <script type="/static/admin/js/proton.js"></script>
+  
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'admin/header.html' %}
+{% block content %}
+
+
+
+<div class="table-heading">
+					<h2 style="padding-top:30px;padding-bottom:5px;">Requests</h2>
+				</div>
+				<div class="agile-tables" style="padding-left: 50px;padding-right: 50px;">
+					<div class="w3l-table-info">
+				
+					    <table id="table">
+						<thead>
+						  <tr>
+							<th>BOOK NAME</th>
+							<th>AUTHOR</th>
+							<th>EDITION</th>
+							<th>AVAILABLE COPIES</th>
+							<th>MEMBER NAME</th>
+							<th>MOBILE</th>
+							<th>REQUESTED DATE</th>
+							<th>APPROVE</th>
+							<th>REMOVE</th>
+							
+						  </tr>
+						</thead>
+						
+						<tbody>
+					
+							{% for n in ms %}
+						  <tr>
+							<td>{{n.aa.book}}</td>
+							<td>{{n.aa.author}}</td>
+							<td>{{n.aa.edition}}</td>
+							<td>{{n.aa.copies}}</td>
+							<td>{{n.rr.name}}</td>
+							<td>{{n.rr.phone}}</td>
+							<td>{{n.z}}</td>
+							<td><a onclick="ap_clk({{n.id}})"><input type="button" name=""  id="ap_id" value="Approve" class="btn btn-danger"></a></td>
+
+							<td><a href="/re/?i_d={{n.id}}"><input type="button" class="btn btn-danger" name="" value="Remove"></a></td>
+							
+						  </tr>
+						 
+						 {% endfor %}
+
+						</tbody>
+
+						
+					  </table>
+					</div>
+				</div>
+
+
+    <script type="text/javascript">
+     function ap_clk(k)
+     {
+      var g=k;
+
+      $.ajax({
+        url:'/ap/',
+        data:
+        {
+          'i':g
+        },
+        datatype:'json',
+        success:function(data)
+        {
+        	{alert('request is approved')}
+        }
+      });
+  	}
+   </script>
+
+  
+{% endblock %}
